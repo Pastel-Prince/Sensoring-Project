@@ -48,15 +48,6 @@ body {
   text-align: center;
 }
 
-#Temperature {
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    margin: 0px;
-    font-size: 120px;
-    margin-top: 30%;
-}
-
 .invisiBox {
   height: 35%;
   margin: 0.3%;
@@ -202,14 +193,26 @@ h4 {
   font-family: 'Roboto', sans-serif;
   color: white;
   text-align: center;
-  margin-top: 20%;
-  margin-bottom: -30%;
+  margin-top: 10%;
+  margin-bottom: 20%;
 }
+
 #title {
   font-family: 'Roboto', sans-serif;
   color: white;
   text-align: center;
 }
+
+
+#Temperature {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    margin: 0px;
+    font-size: 120px;
+    margin-top: -20%;
+}
+
 
 #LightLevel {
   font-family: 'Roboto', sans-serif;

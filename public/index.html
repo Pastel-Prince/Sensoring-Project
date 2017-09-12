@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css"> </link>
     <link rel="stylesheet" type="text/css" href="pallette.css"> </link>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans|Roboto" rel="stylesheet">
     <script src="jq.js"> </script>
@@ -61,6 +62,7 @@
       <h2 id="title"> &nbsp </h2>
       <h1 id="tempTit"> temperature: </h1>
       <h1 id="Temperature"> 15 </h1>
+      <canvas id="myChart" width="200" height="50"></canvas>
       <h1 id="LightLevel"> 21</h1>
       <h1 id="SoundLevel"> 21</h1>
       <h1 id="HumidityLevel"> 21</h1>
@@ -69,5 +71,6 @@
     <script src="/sensor1B1.js"> </script>
     <script src="/sensor1B2.js"> </script>
     <script src="/sensor1T1.js"> </script>
+    <script src="/graph.js"></script>
   <body>
 </html>
