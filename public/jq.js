@@ -23,4 +23,9 @@ $(document).ready(function(){
       $("h2").toggle();
       $("h3").toggle();
     });
+
+    $("#Temperature").click(function(){
+      $("#myChart").slideToggle();
+      $("#Temperature").css("margin-top", "-20%")
+    })
 });

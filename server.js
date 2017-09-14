@@ -37,7 +37,7 @@ app.use(express.static('public'))
 //Socket setup
 var io = socket(server);
 
-var myVar = setInterval(querySensors, 100);
+var myVar = setInterval(querySensors, 200);
 
 function querySensors(){
   io.sockets.emit('query1B1')
@@ -62,7 +62,5 @@ io.on('connection', function(socket){
     Humidities[thisRoom] = "Humidity Level: " + humidity
 
     io.sockets.emit('update', [thisRoom, Temps[thisRoom], Lights[thisRoom], Sounds[thisRoom], Humidities[thisRoom]]);
-    io.sockets.emit()
   })
-
 });
