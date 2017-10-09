@@ -1,3 +1,5 @@
+"use strict";
+
 class NetworkQueue {
     constructor(socketEvent, queueTime, networkClients) {
         // queue is cleared every time it networks
