@@ -1,68 +1,51 @@
-var express = require('express');
-var socket = require('socket.io')
+"use strict";
 
-//App setup
+var express = require("express");
+var socket = require("socket.io");
+var vsprintf = require("sprintf-js").vsprintf;
+
+var networking = require("./sensoring_modules/networking.js");
+var serverConfig = require("./sensoring_modules/server_config.js");
+var sensorManager = require("./sensoring_modules/sensor_manager.js");
+
+// Configuration
+serverConfig.setDisplayPort(5000);
+serverConfig.setReceiverPort(5001);
+
+// App setup
 var app = express();
-var server = app.listen(4000, function(){
-  console.log('listening to requests on port 4000')
+
+var server = app.listen(serverConfig.getDisplayPort(), function(){
+  console.log(vsprintf('Server started on port %s', serverConfig.getDisplayPort()));
 });
 
-var Temps = {
-  '1B1': 16,
-  '1B2': 53,
-  '1T1': 4,
-}
-
-var Lights = {
-  '1B1': 16,
-  '1B2': 53,
-  '1T1': 4,
-}
-
-var Sounds = {
-  '1B1': 16,
-  '1B2': 53,
-  '1T1': 4,
-}
-
-var Humidities = {
-  '1B1': 16,
-  '1B2': 53,
-  '1T1': 4,
-}
+var receiver = app.listen(serverConfig.getReceiverPort(), function(){
+  console.log(vsprintf('Listening on port %s for sensor updates', serverConfig.getReceiverPort()));
+})
 
 // Static files
 app.use(express.static('public'))
 
-//Socket setup
-var io = socket(server);
+// Socket setup
+var clientSocket = socket(server);
+var sensorReceiver = socket(receiver);
 
-var myVar = setInterval(querySensors, 100);
+/* Callbacks */
+function registerSensorSocket(socketId, data) {
+  var sensorTimeout = 10000; // in ms
 
-function querySensors(){
-  io.sockets.emit('query1B1')
-  io.sockets.emit('query1B2')
-  io.sockets.emit('query1T1')
+  // sensorName, sensorPassword, sensorLevel, sensorRoom, sensorTimeout, socketId
+  sensorManager.registerSensor(socketId, data.name, data.password, data.level, data.room, sensorTimeout);
 }
 
-//Say connected on connection
-io.on('connection', function(socket){
-  console.log('made socket connection', socket.id);
+function unregisterSensorSocket(socketId) {
+  sensorManager.unregisterSensor(socketId)
+}
 
-  socket.on('serverData', function(data){
-    var thisRoom = data[0]
-    var temp = data[1]
-    var light = data[2]
-    var sound = data[3]
-    var humidity = data[4]
+// A callback that gets called when a sensor updates the server with some of its information 
+function receiveSensorInformation(socketId, connectedClients, data) {
 
-    Temps[thisRoom] = temp
-    Lights[thisRoom] = "Light Level: " + light
-    Sounds[thisRoom] = "Sound Level: " + sound
-    Humidities[thisRoom] = "Humidity Level: " + humidity
+}
 
-    io.sockets.emit('update', [thisRoom, Temps[thisRoom], Lights[thisRoom], Sounds[thisRoom], Humidities[thisRoom]]);
-    io.sockets.emit()
-  })
-
-});
+// Setup the networking module
+networking.networkingSetup(clientSocket, sensorReceiver, receiveSensorInformation, registerSensorSocket, unregisterSensorSocket);
