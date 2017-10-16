@@ -7,9 +7,8 @@ body {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-color: blue;
+  background-color: #78909C;
   background-size: cover;
-  filter: blur(0px);
   transform: scale(1.2);
 }
 
@@ -45,7 +44,7 @@ body {
 }
 
 #rightbg {
-  background-color: green;
+  background-image: url("public/WIN_20171016_14_25_07_Pro.jpg");
   background-position: left;
   background-size: cover;
   position: fixed;
@@ -54,8 +53,7 @@ body {
   width: 64%;
   right: 1%;
   display: flex;
-  filter: blur(1.5px);
-
+  filter: blur(4px);
 }
 
 .tempbox {
@@ -72,8 +70,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: blue;
-  filter: blur(3px);
-}
+  }
 
 #leftside {
   position: fixed;
@@ -111,7 +108,7 @@ body {
 
 .doubleplusroom {
   flex-grow: 2.25;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0  );
   box-shadow: none;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
@@ -144,8 +141,6 @@ h1 {
 .poop {
   flex: 1;
   width: 100%;
-  margin-top: 2%;
-  margin-bottom: 5%;
   padding-top: 1vh;
 }
 .roomthird {
