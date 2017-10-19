@@ -15,8 +15,12 @@ function registerSensor(socketId, sensorName, sensorPassword, sensorLevel, senso
 
     sensors[socketId] = newSensor;
     // TODO: Create a table in a database if one does not exist for this sensor.
-    
+
     return newSensor;
+}
+
+function unregisterSensor(socketId) {
+    delete sensors[socketId];
 }
 
 function getSensor(socketId) {
@@ -25,5 +29,6 @@ function getSensor(socketId) {
 
 module.exports = {
     "registerSensor" : registerSensor,
+    "unregisterSensor" : unregisterSensor,
     "getSensor" : getSensor
 }
