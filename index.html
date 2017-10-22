@@ -5,8 +5,8 @@
     <link rel="stylesheet" type="text/css" href="theme.css"> </link>
     <link rel="stylesheet" type="text/css" href="pallette.css"> </link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans|Roboto|Montserrat:900" rel="stylesheet">
-    <script src="jq.js"> </script>
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans|Roboto:300,400,500|Montserrat:900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title></title>
   </head>
   <body>
@@ -28,34 +28,68 @@
           <div class='room'> </div>
         </div>
         <div class='floorthird'> <!-- Dom was here -->
-          <div class='room roomthird'>
+          <div class='roomthird'>
             <div class='room poop'> <h4> 1T1 </h4> </div>
             <div class='room poop'> <h4> 1T2 </h4> </div>
           </div>
           <div class='room'> </div>
           <div class='room roomtriple'> </div>
           <div class='room'> </div>
-          <div class='room roomthird'>
+          <div class='roomthird'>
             <div class='room poop'> <h4> 1T3 </h4>  </div>
             <div class='room poop'> <h4> 1T4 </h4>  </div>
           </div>
         </div>
       </div>
-      <div class='floor'></div>
-      <div class='floor'></div>
+      <div class='floor'>
+        <div class='floorthird'>
+          <div class='room'> <h2> 1B1 </h2></div>
+          <div class='room doubleroom'> <h2> 1L1 & 2 </h2> </div>
+          <div class='room'> <h2> 1L3 </h2></div>
+          <div class='room doubleroom'><h2> 1L4 & 5 </h2> </div>
+          <div class='room'> <h2> 1B4 </h2> </div>
+        </div>
+        <div class='floorthird smallthird'>
+          <div class='room'> </div>
+          <div class='room doubleplusroom'> </div>
+          <div class='room tinyroom'> </div>
+          <div class='room doubleplusroom'> </div>
+          <div class='room'> </div>
+        </div>
+        <div class='floorthird'> <!-- Dom was here -->
+          <div class='roomthird'>
+            <div class='room poop'> <h4> 1T1 </h4> </div>
+            <div class='room poop'> <h4> 1T2 </h4> </div>
+          </div>
+          <div class='room'> </div>
+          <div class='room roomtriple'> </div>
+          <div class='room'> </div>
+          <div class='roomthird'>
+            <div class='room poop'> <h4> 1T3 </h4>  </div>
+            <div class='room poop'> <h4> 1T4 </h4>  </div>
+          </div>
+        </div>
+      </div>
+      <div class='floor' />
     </div>
-
 
     <div id='rightbg'> </div>
     <div id='rightside'>
       <div class='tempbox'>
         <h1> Temperature </h1>
-        <h3> 15 </h3>
+        <h3 id='dataView'> 15 </h3>
       </div>
-      <div class='tempbox'>
-        <h1> Sound Level </h1>
-        <h3> 15 </h3>
+      <div id='dataMenuContainer'>
+        <div id='dataMenu'>
+            <i id='Temperature' class="material-icons md-light">whatshot</i>
+            <i id='Noise Level' class="material-icons md-light md-inactive">volume_up</i>
+            <i id='Light Level' class="material-icons md-light md-inactive">lightbulb_outline</i>
+            <i id='Humidity' class="material-icons md-light md-inactive">wb_cloudy</i>
+          </div>
+        </div>
       </div>
     </div>
+    <script src="jq.js"> </script>
+
   <body>
 </html>
