@@ -5,59 +5,91 @@
     <link rel="stylesheet" type="text/css" href="theme.css"> </link>
     <link rel="stylesheet" type="text/css" href="pallette.css"> </link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans|Roboto" rel="stylesheet">
-    <script src="jq.js"> </script>
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans|Roboto:300,400,500|Montserrat:900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title></title>
   </head>
   <body>
-    <div id="leftside">
-      <div id="Level2" class="darkshadow Map">
-      <div id="B1" class="lightshadow hoverable innerBox selectable"> <h2> B1 </h2> </div>
-      <div id="L1" class="lightshadow hoverable innerBox selectable"> <h2> L1 & L2 </h2> </div>
-      <div id="L3" class="lightshadow hoverable innerBox selectable"> <h2> L3 </h2> </div>
-      <div id="L5" class="lightshadow hoverable innerBox selectable"> <h2> L4 & L5 </h2>  </div>
-      <div id="B4" class="lightshadow hoverable innerBox selectable"> <h2> B4 </h2> </div>
-
-      <div id="BL" class="lightshadow hoverable innerBox layer2">  </div>
-      <div id="BML" class="invisiBox layer2"> </div>
-      <div id="BC" class="lightshadow hoverable innerBox layer2 names"> </div>
-      <div id="BMR" class="invisiBox layer2"> </div>
-      <div id="BR" class="lightshadow hoverable innerBox layer2"> </div>
-
-      <div id="T1" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T1 </h3> </div>
-      <div id="T2" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T2 </h3> </div>
-      <div id="B2" class="lightshadow hoverable innerBox selectable"> <h2> B2 </h2> </div>
-      <div id="C" class="lightshadow hoverable innerBox selectable"> <h2> CENTER </h2> </div>
-      <div id="B3" class="lightshadow hoverable innerBox selectable"> <h2> B3 </h2> </div>
-      <div id="T3" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T3 </h3> </div>
-      <div id="T4" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T4 </h3> </div>
+    <div id='background'> </div>
+    <div id='leftside'>
+      <div class='floor'>
+        <div class='floorthird'>
+          <div class='room'> <h2> 1B1 </h2></div>
+          <div class='room doubleroom'> <h2> 1L1 & 2 </h2> </div>
+          <div class='room'> <h2> 1L3 </h2></div>
+          <div class='room doubleroom'><h2> 1L4 & 5 </h2> </div>
+          <div class='room'> <h2> 1B4 </h2> </div>
+        </div>
+        <div class='floorthird smallthird'>
+          <div class='room'> </div>
+          <div class='room doubleplusroom'> </div>
+          <div class='room tinyroom'> </div>
+          <div class='room doubleplusroom'> </div>
+          <div class='room'> </div>
+        </div>
+        <div class='floorthird'> <!-- Dom was here -->
+          <div class='roomthird'>
+            <div class='room poop'> <h4> 1T1 </h4> </div>
+            <div class='room poop'> <h4> 1T2 </h4> </div>
+          </div>
+          <div class='room'> </div>
+          <div class='room roomtriple'> </div>
+          <div class='room'> </div>
+          <div class='roomthird'>
+            <div class='room poop'> <h4> 1T3 </h4>  </div>
+            <div class='room poop'> <h4> 1T4 </h4>  </div>
+          </div>
+        </div>
+      </div>
+      <div class='floor'>
+        <div class='floorthird'>
+          <div class='room'> <h2> 1B1 </h2></div>
+          <div class='room doubleroom'> <h2> 1L1 & 2 </h2> </div>
+          <div class='room'> <h2> 1L3 </h2></div>
+          <div class='room doubleroom'><h2> 1L4 & 5 </h2> </div>
+          <div class='room'> <h2> 1B4 </h2> </div>
+        </div>
+        <div class='floorthird smallthird'>
+          <div class='room'> </div>
+          <div class='room doubleplusroom'> </div>
+          <div class='room tinyroom'> </div>
+          <div class='room doubleplusroom'> </div>
+          <div class='room'> </div>
+        </div>
+        <div class='floorthird'> <!-- Dom was here -->
+          <div class='roomthird'>
+            <div class='room poop'> <h4> 1T1 </h4> </div>
+            <div class='room poop'> <h4> 1T2 </h4> </div>
+          </div>
+          <div class='room'> </div>
+          <div class='room roomtriple'> </div>
+          <div class='room'> </div>
+          <div class='roomthird'>
+            <div class='room poop'> <h4> 1T3 </h4>  </div>
+            <div class='room poop'> <h4> 1T4 </h4>  </div>
+          </div>
+        </div>
+      </div>
+      <div class='floor' />
     </div>
-      <div id="Level1" class="darkshadow Map">
-       <div id="B1" class="lightshadow hoverable innerBox selectable"> <h2> B1 </h2> </div>
-       <div id="L1" class="lightshadow hoverable innerBox selectable"> <h2> L1 & L2 </h2> </div>
-       <div id="L3" class="lightshadow hoverable innerBox selectable"> <h2> L3 </h2> </div>
-       <div id="L5" class="lightshadow hoverable innerBox selectable"> <h2> L4 & L5 </h2>  </div>
-       <div id="B4" class="lightshadow hoverable innerBox selectable"> <h2> B4 </h2> </div>
 
-       <div id="BL" class="lightshadow hoverable innerBox layer2">  </div>
-       <div id="BML" class="invisiBox layer2"> </div>
-       <div id="BC" class="lightshadow hoverable innerBox layer2 names"> </div>
-       <div id="BMR" class="invisiBox layer2"> </div>
-       <div id="BR" class="lightshadow hoverable innerBox layer2"> </div>
-
-       <div id="T1" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T1 </h3> </div>
-       <div id="T2" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T2 </h3> </div>
-       <div id="B2" class="lightshadow hoverable innerBox selectable"> <h2> B2 </h2> </div>
-       <div id="C" class="lightshadow hoverable innerBox selectable"> <h2> CENTER </h2> </div>
-       <div id="B3" class="lightshadow hoverable innerBox selectable"> <h2> B3 </h2> </div>
-       <div id="T3" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T3 </h3> </div>
-       <div id="T4" class="lightshadow hoverable innerBox layer2 selectable"> <h3> T4 </h3> </div>
-     </div>
-      <div id="Ground" class="darkshadow Map"> </div>
+    <div id='rightbg'> </div>
+    <div id='rightside'>
+      <div class='tempbox'>
+        <h1> Temperature </h1>
+        <h3 id='dataView'> 15 </h3>
+      </div>
+      <div id='dataMenuContainer'>
+        <div id='dataMenu'>
+            <i id='Temperature' class="material-icons md-light">whatshot</i>
+            <i id='Noise Level' class="material-icons md-light md-inactive">volume_up</i>
+            <i id='Light Level' class="material-icons md-light md-inactive">lightbulb_outline</i>
+            <i id='Humidity' class="material-icons md-light md-inactive">wb_cloudy</i>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="rightside" class="darkshadow">
-      <h1 id="Temperature"> 15<sup>o</sup> </h1>
+    <script src="jq.js"> </script>
 
-    </div>
   <body>
 </html>

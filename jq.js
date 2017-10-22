@@ -1,33 +1,28 @@
-var butts = 16
+var last = '#212121'
+var currentData = 'Temperature'
+var data = {
+  'Temperature': 30,
+  'Light Level': 40,
+  'Noise Level': 10,
+  'Humidity': 20
+}
 
-$(document).ready(function(){
-    $(".selectable").click(function(){
-        $(".innerBox").css("background-color", "grey");
-        if ( $(this).is("#B1") || $(this).is("#B2") || $(this).is("#B3") || $(this).is("#B4")) {
-          $(this).css("background-color", "#BA68C8");
-          $("#rightside").css("background-color", "#BA68C8");
-        }
-        if ( $(this).is("#L1") || $(this).is("#L3") || $(this).is("#L5")) {
-          $(this).css("background-color", "#81D4FA");
-          $("#rightside").css("background-color", "#81D4FA");
-        }
-        if ( $(this).is("#T1") || $(this).is("#T2") || $(this).is("#T3") || $(this).is("#T4")) {
-          $(this).css("background-color", "#F06292");
-          $("#rightside").css("background-color", "#F06292");
-        }
-        if ( $(this).is("#C")) {
-          $(this).css("background-color", "#81C784");
-          $("#rightside").css("background-color", "#81C784");
-        }
-    });
+$('.material-icons').click(function(){
+  $('.material-icons').addClass('md-inactive')
+  $(this).removeClass('md-inactive')
+  currentData = $(this).attr('id')
+  $('h1').text($(this).attr('id'))
+})
 
-    $("#BC").click(function(){
-      $("h2").toggle();
-      $("h3").toggle();
-    });
+$('.room').click(function(){
+  $(last).css('background-color', '#212121')
+  $(last).css('color', 'white')
 
-    $("#Temperature").click(function() {
-      $(this).html(butts +"<sup>o</sup>")
-      butts += 1
-    })
-});
+  $(this).css('color', 'black')
+  $(this).css('background-color', '#F8F8F8')
+  last = $(this)
+})
+
+window.setInterval(function() {
+  $('#dataView').text(data[currentData])
+}, 100)
