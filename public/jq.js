@@ -23,6 +23,6 @@ $('.room').click(function(){
   last = $(this)
 })
 
-window.setInterval(function() {
-  $('#dataView').text(data[currentData])
-}, 100)
+// window.setInterval(function() {
+//   $('#dataView').text(data[currentData])
+// }, 100)
