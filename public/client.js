@@ -11,7 +11,7 @@ var currentData = 'Temperature';
 
 // When you click a room it sets the room to the currently viewed room and updates the display
 $('.room').click(function() {
-    currentRoom = ($(this).text()).replace(/\s/g, '');
+    currentRoom = $(this).attr('id');
     update();
 });
 
@@ -48,8 +48,12 @@ function update() {
 
 socket.on('update', function(packet) {
 
-    mostRecentData[packet["room"]] = packet["data"];
-	if(currentRoom == packet["room"]) {
+    var room = packet["room"];
+    mostRecentData[room] = packet["data"];
+	if(currentRoom == room) {
 		update();
 	}
+    // Display the room as active. escapeSelector is neccessary to escape any "&".
+    // Sensors are assumed to be permenantly active until a page refresh.
+    $('#' + $.escapeSelector(room)).addClass("active");
 })

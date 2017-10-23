@@ -1,4 +1,4 @@
-var last = '#212121'
+var last
 
 $('.material-icons').click(function(){
   $('.material-icons').addClass('md-inactive')
@@ -7,10 +7,12 @@ $('.material-icons').click(function(){
 })
 
 $('.room').click(function(){
-  $(last).css('background-color', '#212121')
-  $(last).css('color', 'white')
+  $(last).removeClass('selected');
+  $(this).addClass('selected');
+  last = $(this);
+});
 
-  $(this).css('color', 'black')
-  $(this).css('background-color', '#F8F8F8')
-  last = $(this)
-})
+// Set room IDs to the room names specified in the HTML
+$('.room').attr('id', function() {
+    return ($(this).text()).replace(/\s/g, '');
+});
