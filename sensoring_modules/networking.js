@@ -34,15 +34,15 @@ function networkingSetup(clientSocket, sensorReceiver, receiveSensorInformation,
         });
 
         socket.on("disconnect", (reason) => {
-        var room = sensorManager.getSensor(socket.id).name;
+            var room = sensorManager.getSensor(socket.id).name;
             console.log(vsprintf('Sensor for %s disconnected. Reason: %s', [room, reason]));
             unregisterSensorSocket(socket.id);
         });
 
         // Sensor has sent data to the server
-        socket.on("receiveSensorInformation", (data, sensorInfo) => {
+        socket.on("receiveSensorInformation", (packet) => {
             // Run a callback given to us when setup function was called
-            receiveSensorInformation(socket.id, connectedClients, data, sensorInfo);
+            receiveSensorInformation(socket.id, connectedClients, packet);
         });
     });
 }

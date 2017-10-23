@@ -43,9 +43,9 @@ function unregisterSensorSocket(socketId) {
 }
 
 // A callback that gets called when a sensor updates the server with some of its information
-function receiveSensorInformation(socketId, connectedClients, data, sensorInfo) {
+function receiveSensorInformation(socketId, connectedClients, packet) {
     for (var clientID in connectedClients) {
-        connectedClients[clientID].emit("update", data, sensorInfo);
+        connectedClients[clientID].emit("update", packet);
     }
 }
 
