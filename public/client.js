@@ -6,10 +6,12 @@ var dataElement = document.getElementById('dataView');
 
 // Sets default room to 1b1
 var currentRoom = '1B1';
+// And the default element to temperature
+var currentData = 'Temperature';
 
 // When you click a room it sets the room to the currently viewed room and updates the display
 $('.room').click(function() {
-	currentRoom = ($(this).text()).replace(/\s/g, '');
+    currentRoom = ($(this).text()).replace(/\s/g, '');
     update();
 });
 
@@ -19,23 +21,28 @@ $('.material-icons').click(function(){
     update();
 })
 
-var mostRecentData = [];
+var mostRecentData = {};
 
+// Update the value displayed for the currently selects room/element
 function update() {
     roomData = mostRecentData[currentRoom];
-    switch(currentData) {
-        case "Temperature":
-            dataElement.innerHTML = roomData["temperature"];
-            break;
-        case "Light Level":
-            dataElement.innerHTML = roomData["lightLevel"];
-            break;
-        case "Noise Level":
-            dataElement.innerHTML = roomData["soundLevel"];
-            break;
-        case "Humidity":
-            dataElement.innerHTML = roomData["humidity"];
-            break;
+    if (!!roomData) {
+        switch(currentData) {
+            case "Temperature":
+                dataElement.innerHTML = roomData["temperature"];
+                break;
+            case "Light Level":
+                dataElement.innerHTML = roomData["lightLevel"];
+                break;
+            case "Noise Level":
+                dataElement.innerHTML = roomData["soundLevel"];
+                break;
+            case "Humidity":
+                dataElement.innerHTML = roomData["humidity"];
+                break;
+        }
+    } else {
+        dataElement.innerHTML = "Sensor disconnected";
     }
 }
 

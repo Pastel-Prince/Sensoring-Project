@@ -1,11 +1,4 @@
 var last = '#212121'
-var currentData = 'Temperature'
-var data = {
-  'Temperature': 30,
-  'Light Level': 40,
-  'Noise Level': 10,
-  'Humidity': 20
-}
 
 $('.material-icons').click(function(){
   $('.material-icons').addClass('md-inactive')
