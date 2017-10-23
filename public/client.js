@@ -12,23 +12,30 @@ $('.room').click(function() {
 	currentRoom = ($(this).text()).replace(/\s/g, '');
 });
 
+var mostRecentData = [];
+
+function update() {
+    roomData = mostRecentData[currentRoom];
+    switch(currentData) {
+        case "Temperature":
+            dataElement.innerHTML = roomData["temperature"];
+            break;
+        case "Light Level":
+            dataElement.innerHTML = roomData["lightLevel"];
+            break;
+        case "Noise Level":
+            dataElement.innerHTML = roomData["soundLevel"];
+            break;
+        case "Humidity":
+            dataElement.innerHTML = roomData["humidity"];
+            break;
+    }
+}
+
 socket.on('update', function(packet) {
 
+    mostRecentData[packet["room"]] = packet["data"];
 	if(currentRoom == packet["room"]) {
-        var data = packet["data"];
-		switch(currentData) {
-			case "Temperature":
-				dataElement.innerHTML = data["temperature"];
-				break;
-			case "Light Level":
-				dataElement.innerHTML = data["lightLevel"];
-				break;
-			case "Noise Level":
-				dataElement.innerHTML = data["soundLevel"];
-				break;
-			case "Humidity":
-				dataElement.innerHTML = data["humidity"];
-				break;
-		}
+		update();
 	}
 })
