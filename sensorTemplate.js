@@ -27,7 +27,6 @@ class NetworkSensor extends Sensor {
 			"data": {
 				"temperature" : this.temperature,
 				"humidity" : this.humidity,
-				"pressure" : this.pressure,
 				"soundLevel" : this.soundLevel,
 				"lightLevel" : this.lightLevel
 			}
@@ -43,7 +42,6 @@ function updateServer() {
 
 	currentSensor.setTemperature(Math.round(Math.random() * 50 - 25));
 	currentSensor.setHumidity(Math.round(Math.random() * 100));
-	currentSensor.setPressure(Math.round(Math.random() * 100000));
 	currentSensor.setSoundLevel(Math.round(Math.random() * 50 + 50));
 	currentSensor.setLightLevel(Math.round(Math.random() * 5 + 5));
 

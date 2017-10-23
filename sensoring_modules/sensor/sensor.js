@@ -9,7 +9,6 @@ class Sensor {
 
         this.temperature = 0;
         this.humidity = 0;
-        this.pressure = 0;
         this.soundLevel = 0;
         this.lightLevel = 0;
     }
@@ -60,14 +59,6 @@ class Sensor {
 
     getHumidity() {
         return this.humidity;
-    }
-
-    setPressure(pressure) {
-        this.pressure = pressure;
-    }
-
-    getPressure() {
-        return this.pressure;
     }
 
     setSoundLevel(soundLevel) {
