@@ -29,7 +29,7 @@ function update() {
     if (!!roomData) {
         switch(currentData) {
             case "Temperature":
-                dataElement.innerHTML = roomData["temperature"];
+                dataElement.innerHTML = roomData["temperature"] + "°C";
                 break;
             case "Light Level":
                 dataElement.innerHTML = roomData["lightLevel"];
@@ -38,7 +38,7 @@ function update() {
                 dataElement.innerHTML = roomData["soundLevel"];
                 break;
             case "Humidity":
-                dataElement.innerHTML = roomData["humidity"];
+                dataElement.innerHTML = roomData["humidity"] + "%";
                 break;
         }
     } else {
