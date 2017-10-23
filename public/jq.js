@@ -10,9 +10,7 @@ var data = {
 $('.material-icons').click(function(){
   $('.material-icons').addClass('md-inactive')
   $(this).removeClass('md-inactive')
-  currentData = $(this).attr('id')
   $('h1').text($(this).attr('id'))
-  update()
 })
 
 $('.room').click(function(){
@@ -22,5 +20,4 @@ $('.room').click(function(){
   $(this).css('color', 'black')
   $(this).css('background-color', '#F8F8F8')
   last = $(this)
-  update()
 })

@@ -7,10 +7,17 @@ var dataElement = document.getElementById('dataView');
 // Sets default room to 1b1
 var currentRoom = '1B1';
 
-// When you click a room it sets the room to the currently viewed room
+// When you click a room it sets the room to the currently viewed room and updates the display
 $('.room').click(function() {
 	currentRoom = ($(this).text()).replace(/\s/g, '');
+    update();
 });
+
+// Update display when data element is changed
+$('.material-icons').click(function(){
+    currentData = $(this).attr('id');
+    update();
+})
 
 var mostRecentData = [];
 
