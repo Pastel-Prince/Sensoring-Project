@@ -37,14 +37,14 @@ function updateServer() {
 
     // Update Object
 
-    currentSensor.setTemperature(Math.random() * 50 - 25);
-    currentSensor.setHumidity(Math.random() * 100);
-    currentSensor.setPressure(Math.random() * 100000);
-    currentSensor.setSoundLevel(Math.random() * 50 + 50);
-    currentSensor.setLightLevel(Math.random() * 5 + 5);
+    currentSensor.setTemperature(Math.round(Math.random() * 50 - 25));
+    currentSensor.setHumidity(Math.round(Math.random() * 100));
+    currentSensor.setPressure(Math.round(Math.random() * 100000));
+    currentSensor.setSoundLevel(Math.round(Math.random() * 50 + 50));
+    currentSensor.setLightLevel(Math.round(Math.random() * 5 + 5));
 
     // Networking
-    socket.emit("receiveSensorInformation", currentSensor.buildPacket());
+    socket.emit("receiveSensorInformation", currentSensor.buildPacket(), currentSensor.init());
     setTimeout(updateServer, timeout);
 }
 

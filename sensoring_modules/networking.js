@@ -40,9 +40,9 @@ function networkingSetup(clientSocket, sensorReceiver, receiveSensorInformation,
         });
 
         // Sensor has sent data to the server
-        socket.on("receiveSensorInformation", (data) => {
+        socket.on("receiveSensorInformation", (data, sensorInfo) => {
             // Run a callback given to us when setup function was called
-            receiveSensorInformation(socket.id, connectedClients, data);
+            receiveSensorInformation(socket.id, connectedClients, data, sensorInfo);
         });
     });
 }

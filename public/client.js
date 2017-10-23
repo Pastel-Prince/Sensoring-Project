@@ -2,32 +2,32 @@
 var socket = io.connect('http://localhost:5000');
 
 // Query DOM
-var temp = document.getElementById('Temperature');
-    Title = document.getElementById('title')
-    lightlevel = document.getElementById('LightLevel')
-    soundlevel = document.getElementById('SoundLevel')
-    humiditylevel = document.getElementById('HumidityLevel'),
-    dataElement = document.getElementById('dataView')
+var dataElement = document.getElementById('dataView')
 
-var room = '1B1'
+// Sets default room to 1b1
+var currentRoom = '1B1'
 
-$('.innerBox').click(function(){
-  if($(this).parent().attr('id') == 'Level2'){
-    var level = '2'
-  }
-  if($(this).parent().attr('id') == 'Level1'){
-    var level = '1'
-  }
-
-  room = String((level + $(this).attr('id')))
-  title.innerHTML = (level + $(this).attr('id'))
-  socket.emit('update', room)
+//When you click a room it sets the room to the currently viewed room
+$('.room').click(function(){
+  currentRoom = ($(this).text()).replace(/\s/g, '')
 })
 
-socket.on('update', function(data){
-  // TODO: Currently we don't send the room... to be added
-  // if(data[0] == room){
-    dataElement.innerHTML = data["lightLevel"]
-    console.log(data["lightLevel"]);
-  // }
+socket.on('update', function(data, sensorInfo){
+
+  if(currentRoom == sensorInfo["name"]){
+    switch(currentData){
+      case "Temperature":
+        dataElement.innerHTML = data["temperature"];
+        break;
+      case "Light Level":
+        dataElement.innerHTML = data["lightLevel"];
+        break;
+      case "Noise Level":
+        dataElement.innerHTML = data["soundLevel"];
+        break;
+      case "Humidity":
+        dataElement.innerHTML = data["humidity"];
+        break;
+    }
+  }
 })

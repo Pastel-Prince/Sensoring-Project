@@ -22,7 +22,3 @@ $('.room').click(function(){
   $(this).css('background-color', '#F8F8F8')
   last = $(this)
 })
-
-// window.setInterval(function() {
-//   $('#dataView').text(data[currentData])
-// }, 100)
