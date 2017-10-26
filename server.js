@@ -7,6 +7,7 @@ var vsprintf = require("sprintf-js").vsprintf;
 var networking = require("./sensoring_modules/networking.js");
 var serverConfig = require("./sensoring_modules/server_config.js");
 var sensorManager = require("./sensoring_modules/sensor_manager.js");
+var api = require("./api/api.js");
 
 // Configuration
 serverConfig.setDisplayPort(5000);
@@ -24,7 +25,10 @@ var receiver = app.listen(serverConfig.getReceiverPort(), function(){
 })
 
 // Static files
-app.use(express.static('public'))
+app.use(express.static('public'));
+
+// API
+api.initAPI(app);
 
 // Socket setup
 var clientSocket = socket(server);
