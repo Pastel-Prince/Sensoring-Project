@@ -4,7 +4,7 @@ var io = require("socket.io-client");
 var socket = io.connect("http://localhost:5001");
 var Sensor = require("./sensoring_modules/sensor/sensor.js").Sensor;
 
-var timeout = 1000;
+var timeout = 100;
 
 class NetworkSensor extends Sensor {
 	constructor(name, password, level, room) {

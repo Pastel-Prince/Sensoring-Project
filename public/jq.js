@@ -7,9 +7,12 @@ $('.material-icons').click(function(){
 })
 
 $('.room').click(function(){
-  $(last).removeClass('selected');
-  $(this).addClass('selected');
-  last = $(this);
+    thisId = '#' + ($(this).text()).replace(/\s/g, '')
+    if($(thisId).hasClass("active")){
+        $(last).removeClass('selected');
+        $(this).addClass('selected');
+        last = $(this);
+    }
 });
 
 // Set room IDs to the room names specified in the HTML

@@ -42,12 +42,11 @@ function update() {
                 break;
         }
     } else {
-        dataElement.innerHTML = "Sensor disconnected";
+
     }
 }
 
 socket.on('update', function(packet) {
-
     var room = packet["room"];
     mostRecentData[room] = packet["data"];
 	if(currentRoom == room) {
