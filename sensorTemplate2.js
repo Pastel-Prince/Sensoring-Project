@@ -34,7 +34,7 @@ class NetworkSensor extends Sensor {
 	}
 }
 
-var currentSensor = new NetworkSensor("2B4", "password", 1, "B1");
+var currentSensor = new NetworkSensor("1L12", "password", 1, "B1");
 
 function updateServer() {
 
