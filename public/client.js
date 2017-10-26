@@ -1,5 +1,6 @@
 // Make connection
-var socket = io.connect('http://localhost:5000');
+var ip = "http://localhost:5000"
+var socket = io.connect(ip);
 
 // Query DOM
 var dataElement = document.getElementById('dataView');
@@ -9,19 +10,24 @@ var currentRoom = '1B1';
 // And the default element to temperature
 var currentData = 'Temperature';
 
+
 // When you click a room it sets the room to the currently viewed room and updates the display
 $('.room').click(function() {
     thisId = '#' + ($(this).text()).replace(/[\s&]/g, '')
     if($(thisId).hasClass("active")){
         currentRoom = $(this).attr('id');
         update();
-}
+    }
 });
 
 // Update display when data element is changed
 $('.material-icons').click(function(){
+    lastData = currentData
     currentData = $(this).attr('id');
     update();
+
+    //Remake the graph whenever the data type is changed
+    initGraph()
 })
 
 var mostRecentData = {};
@@ -34,20 +40,20 @@ function update() {
             case "Temperature":
                 dataElement.innerHTML = roomData["temperature"] + "°C";
                 break;
-            case "Light Level":
+            case "Light-Level":
                 dataElement.innerHTML = roomData["lightLevel"];
                 break;
-            case "Noise Level":
+            case "Noise-Level":
                 dataElement.innerHTML = roomData["soundLevel"];
                 break;
             case "Humidity":
                 dataElement.innerHTML = roomData["humidity"] + "%";
                 break;
         }
-    } else {
-
     }
 }
+
+
 
 socket.on('update', function(packet) {
     var room = packet["room"];
@@ -59,3 +65,21 @@ socket.on('update', function(packet) {
     // Sensors are assumed to be permenantly active until a page refresh.
     $('#' + $.escapeSelector(room)).addClass("active");
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;

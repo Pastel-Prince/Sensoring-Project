@@ -1,83 +1,49 @@
+var graphData = [];
+var graphDataIndex = []
+var ctx = document.getElementById("myChart");
 
-var Labels = []
-var dataSet = []
+var initGraph = function(){
+    //Remove last data from graph
+    graphData = [];
+    graphDataIndex = []
 
-//Identifies what room we're in
-var room = '1B1'
+    // Get the id of the currently selected room without spaces or andersands
+    thisRoom = currentRoom.replace(/[\s&]/g, '')
+    // Get the json file containing the data for the currently selected room and data type (Temperature, Sound et.) and push the last days worth of data into a list
+    $.getJSON( ip +"/api/query?rooms="+ thisRoom +"&metrics="+ currentData +"&from=r-0.25d&to=rnow", function(data){
+        for(i=0;i<data[thisRoom].length;i++){
+            graphData.push(data[thisRoom][i]["metrics"][currentData])
+            graphDataIndex.push(data[thisRoom][i]["timestamp"])
+        }
+    })
 
-$('.innerBox').click(function(){
-  if($(this).parent().attr('id') == 'Level2'){
-    var level = '2'
-  }
-  if($(this).parent().attr('id') == 'Level1'){
-    var level = '1'
-  }
+    //Set up new graphs data and options
+    var chartThings = {
+        type: 'line',
+        data: {
+            labels: graphDataIndex,
+            datasets: [{
+                label: currentData,
+                data: graphData,
+                backgroundColor: '#FFFFFF',
+                fill: false,
+                lineTension: 0.5,
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{display: false}]
+            },
+            legend: {display: false }
+        }
+    }
 
-  room = String((level + $(this).attr('id')))
-})
+    //Create the new graph with the new data
+    myChart = new Chart(ctx, chartThings)
 
-var options = {
-  scales: {
-    xAxes: [{
-      gridLines: {
-        display:false
-      }
-    }],
-    yAxes: [{
-      gridLines: {
-        display:false
-      }
-    }]
-  },
-
-  legend: {
-    display: false
-  },
-  tooltips: {
-      callbacks: {
-         label: function(tooltipItem) {
-                return tooltipItem.yLabel;
-         }
-      }
-  }
 }
 
-var p = new Chart(document.getElementById("myChart"), {
-  type: 'line',
-  data: {
-    labels: Labels,
-    datasets: [{
-        data: dataSet,
-        label: "Africa",
-        borderColor: "#FFFFFF",
-        radius: 0,
-        fill: false,
-        lineTension: 0.5,
-      },
-    ]
-  },
-  options: options,
-});
-
-
-
-function addData(data) {
-  dataSet.push(data)
-  Labels.push('')
-  p.update()
-}
-
-function removeData(){
-  dataSet.shift()
-  Labels.shift()
-  p.update()
-}
-
-socket.on('update', function(data){
-  if(data[0] == room){
-    addData(data[1])
-  }
-  if(dataSet.length > 100){
-    removeData()
-  }
-})
+//Create initial graph when page loads
+initGraph()

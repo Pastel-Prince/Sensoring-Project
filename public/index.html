@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="theme.css"> </link>
     <link rel="stylesheet" type="text/css" href="pallette.css"> </link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"> </script>
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans|Roboto:300,400,500|Montserrat:900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -73,7 +74,9 @@
           </div>
         </div>
       </div>
-      <div class='floor' />
+      <div class='floor'>
+          <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
     </div>
 
     <div id='rightbg'> </div>
@@ -85,8 +88,8 @@
       <div id='dataMenuContainer'>
         <div id='dataMenu'>
             <i id='Temperature' class="material-icons md-light">whatshot</i>
-            <i id='Noise Level' class="material-icons md-light md-inactive">volume_up</i>
-            <i id='Light Level' class="material-icons md-light md-inactive">lightbulb_outline</i>
+            <i id='Noise-Level' class="material-icons md-light md-inactive">volume_up</i>
+            <i id='Light-Level' class="material-icons md-light md-inactive">lightbulb_outline</i>
             <i id='Humidity' class="material-icons md-light md-inactive">wb_cloudy</i>
           </div>
         </div>
@@ -94,6 +97,7 @@
     </div>
     <script src="jq.js"> </script>
     <script src="client.js"> </script>
+    <script src='graph.js'> </script>
 
   <body>
 </html>
