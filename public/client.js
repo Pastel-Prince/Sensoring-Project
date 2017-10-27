@@ -11,8 +11,11 @@ var currentData = 'Temperature';
 
 // When you click a room it sets the room to the currently viewed room and updates the display
 $('.room').click(function() {
-    currentRoom = $(this).attr('id');
-    update();
+    thisId = '#' + ($(this).text()).replace(/[\s&]/g, '')
+    if($(thisId).hasClass("active")){
+        currentRoom = $(this).attr('id');
+        update();
+}
 });
 
 // Update display when data element is changed
