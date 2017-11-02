@@ -17,7 +17,9 @@ $('.room').click(function() {
     if($(thisId).hasClass("active")){
         currentRoom = $(this).attr('id');
         update();
+        initGraph()
     }
+
 });
 
 // Update display when data element is changed

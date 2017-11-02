@@ -55,3 +55,8 @@ function receiveSensorInformation(socketId, connectedClients, packet) {
 
 // Setup the networking module
 networking.networkingSetup(clientSocket, sensorReceiver, receiveSensorInformation, registerSensorSocket, unregisterSensorSocket);
+
+
+
+//TODO Store all chart data on the server. Server periodically sends updated charts to client.
+//TODO Lables should be the time the data was taken and the y value should be the temperature etc.

@@ -10,7 +10,7 @@ var initGraph = function(){
     // Get the id of the currently selected room without spaces or andersands
     thisRoom = currentRoom.replace(/[\s&]/g, '')
     // Get the json file containing the data for the currently selected room and data type (Temperature, Sound et.) and push the last days worth of data into a list
-    $.getJSON( ip +"/api/query?rooms="+ thisRoom +"&metrics="+ currentData +"&from=r-0.25d&to=rnow", function(data){
+    $.getJSON( ip +"/api/query?rooms="+ thisRoom +"&metrics="+ currentData +"&from=r-1h&to=rnow", function(data){
         for(i=0;i<data[thisRoom].length;i++){
             graphData.push(data[thisRoom][i]["metrics"][currentData])
             graphDataIndex.push(data[thisRoom][i]["timestamp"])
@@ -26,6 +26,7 @@ var initGraph = function(){
                 label: currentData,
                 data: graphData,
                 backgroundColor: '#FFFFFF',
+                borderColor: '#FFFFFF',
                 fill: false,
                 lineTension: 0.5,
             }],
@@ -34,7 +35,7 @@ var initGraph = function(){
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                xAxes: [{display: false}]
+                xAxes: [{display: false, beginAtZero: false,}]
             },
             legend: {display: false }
         }
